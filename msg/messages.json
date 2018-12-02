@@ -1,0 +1,23 @@
+[
+  {
+    "fname": "Julia",
+    "lname": "Roberts",
+    "birthday":"1967-10-28",
+    "imgURL": "https://m.media-amazon.com/images/M/MV5BMTQzNjU3MDczN15BMl5BanBnXkFtZTYwNzY2Njc4._V1_.jpg",
+    "imdbURL": "https://www.imdb.com/name/nm0000210/?ref_=fn_al_nm_1"
+  },
+  {
+    "fname": "Richard",
+    "lname": "Gere",
+    "birthday": "1949-08-31",
+    "imgURL": "https://m.media-amazon.com/images/M/MV5BMTI2NDQ2OTY4M15BMl5BanBnXkFtZTYwNTYyNjc4._V1_.jpg",
+    "imdbURL": "https://www.imdb.com/name/nm000152/?ref_=nv_sr_5"
+  },
+  {
+    "fname": "Mel", 
+    "lname": "Gibson", 
+    "birthday": "1956-01-03",
+    "imgURL": "https://m.media-amazon.com/images/M/MV5BNTUzOTMwNTM0OV5BMl5BanBnXkFtZTcwNDQwMTUxMw@@._V1_UY317_CR8,0,214,317_AL_.jpg",
+    "imdbURL": "https://www.imdb.com/name/nm0000154/?ref_=nv_sr_2"
+  }
+]
