@@ -1,12 +1,20 @@
-.container{
-    width: 100%;
-    background-color: rgb(160, 130, 130);
-    max-width: 100%;
-
+.msgbody{
+    background-color:rgb(241, 235, 222);
+    border: 1px solid black;    
 }
 
-.row{
+.container{
+    width: 100%;
+    max-width: 100%;
+}
+
+.row{    
+    margin: 2px;
+    background-color: rgb(160, 130, 130);
     border: 1px solid black;    
+}
+input{
+    background-color: rgb(1, 130, 130);
 }
 #newMsgForm{
     width: 300px;
