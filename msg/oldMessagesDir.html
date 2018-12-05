@@ -1,6 +1,9 @@
 <h1>Old Messages</h1>
-<tmpl-message></tmpl-message>
-
+<div ng-controller="msgCtrl">
+    <div ng-repeat="message in messages | filter : filtermessages" > 
+          <tmpl-message></tmpl-message>
+    </div>
+</div>
 <!-- <div class="container">        
         <div class="row" 
             ng-repeat="message in messages | filter : filtermessages | orderBy : propName : direction" 
@@ -13,4 +16,3 @@
             <br>
             <a style="text-align:center " href="{{message.imdbURL}}" target="_blank ">click me</a>
         </div> -->
-</div>

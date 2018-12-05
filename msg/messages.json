@@ -1,21 +1,21 @@
 [
   { 
-    "mSgId": "1",
-    "mSgName": "MsgName1",
-    "msgBody": "msgBody1",
+    "msgId":"1",
+    "msgName":"MsgName1",
+    "msgBody":"msgBody1",
     "msgDate":"1967-10-21",
-    "msgAutorId": "a1"
+    "msgAutor":"a1"
   },{ 
-    "mSgId": "2",
-    "mSgName": "MsgName2",
-    "msgBody": "msgBody2",
+    "msgId":"2",
+    "msgName":"MsgName2",
+    "msgBody":"msgBody2",
     "msgDate":"1967-10-22",
-    "msgAutor": "a2"
+    "msgAutor":"a2"
   },{ 
-    "mSgId": "3",
-    "mSgName": "MsgName3",
-    "msgBody": "msgBody3",
+    "msgId":"3",
+    "msgName":"MsgName3",
+    "msgBody":"msgBody3",
     "msgDate":"1967-10-23",
-    "msgAutor": "a3"
+    "msgAutor":"a3"
   }
 ]
