@@ -1,7 +1,22 @@
-app.controller("msgCtrl", function ($scope, $http) {
+app.controller("msgCtrl", function ($scope, $http, msgSrv) {
+    var countMessages = 0;
+
+    //alert($scope.user);
+    
     $scope.messages = [];
     $scope.msgName = "msg Name Temp";
     $scope.msgBody = "msg Body Temp";
+    
+    // actorSrv.getAll().then(function(actors) {
+    //     $scope.actors = actors;      
+    //   }, function(error) {      
+    //     $log.error(error);
+    // });
+
+    var getUserName = function(){
+        //alert(msgSrv.user());
+        return msgSrv.user() ;
+    };
 
     $scope.newMessage = function(){
         $scope.addMessage(
@@ -9,8 +24,8 @@ app.controller("msgCtrl", function ($scope, $http) {
             $scope.msgName,
             $scope.msgBody,
             "$scope.msgDate",
-            "$scope.msgAutor");
-            alert('new msg = ' + $scope.messages[$scope.messages.length-1].msgBody);
+            getUserName());
+            //alert('new msg.autor = ' + $scope.messages[$scope.messages.length-1].msgAutor);
     }
 
     $scope.filtermessages = function(){
