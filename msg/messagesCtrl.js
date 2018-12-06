@@ -1,5 +1,17 @@
 app.controller("msgCtrl", function ($scope, $http) {
     $scope.messages = [];
+    $scope.msgName = "msg Name Temp";
+    $scope.msgBody = "msg Body Temp";
+
+    $scope.newMessage = function(){
+        $scope.addMessage(
+            "$scope.msgId",
+            $scope.msgName,
+            $scope.msgBody,
+            "$scope.msgDate",
+            "$scope.msgAutor");
+            alert('new msg = ' + $scope.messages[$scope.messages.length-1].msgBody);
+    }
 
     $scope.filtermessages = function(){
         return true
@@ -13,9 +25,10 @@ app.controller("msgCtrl", function ($scope, $http) {
         this.msgAutor   = msgAutor  ;          
     }
 
-    $scope.addMessage = function(p1,p2,p3,p4,p5){
-        $scope.messages.push(new Message(p1,p2,p3,p4,p5));         
+    $scope.addMessage = function(p1,p2,p3,p4,p5){        
+        $scope.messages.push(new Message(p1,p2,p3,p4,p5));
         //$scope.tdText="";
+        
     }
 
     $http({method: "GET", url:"msg/messages.json"}).then(function (response) {
