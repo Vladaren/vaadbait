@@ -1,4 +1,5 @@
-app.controller("msgCtrl", function ($scope, $http, msgSrv) {
+app.controller("msgCtrl", function ($scope, $http, $q, msgSrv) {
+    var prefixUrlDb = "http://my-json-server.typicode.com/vladaren/vaadbait/";
     var countMessages = 0;
 
     //alert($scope.user);
@@ -41,97 +42,45 @@ app.controller("msgCtrl", function ($scope, $http, msgSrv) {
     }
 
     $scope.addMessage = function(p1,p2,p3,p4,p5){        
-        $scope.messages.push(new Message(p1,p2,p3,p4,p5));
-        //$scope.tdText="";
-        
+        $scope.messages.push(new Message(p1,p2,p3,p4,p5));        //$scope.tdText="";       
     }
-
-    $http({method: "GET", url:"app/msg/messages.json"}).then(function (response) {
-        // Success
-        for (var i = 0; i < response.data.length; i++) {
+        
+    $http({method: "GET", url:prefixUrlDb + "messages"}).then(function (response) {
+    // Success    
+        for (var i = 0; i < response.data.length; i++){
             $scope.addMessage(
                 response.data[i].msgId,
                 response.data[i].msgName,
                 response.data[i].msgBody,
                 response.data[i].msgDate,
-                response.data[i].msgAutor
-            );
-        }  
-        
-    }, function (error) { console.error(error); })    
+                response.data[i].msgAutor);
+        }          
+        }, function (error) { console.error(error); async.reject(error);}
+    );            
+    })
+////////////////////////////////////////////////
+    // function login(email, pwd) {
+    //     var async = $q.defer();
 
-});
- 
-//     var showCompleted = true;
-//     var showActive = true;
-//     var todoInner;
+    //     var loginURL = "http://my-json-server.typicode.com/nirch/recipe-book-v3/users?email=" +
+    //         email + "&pwd=" + pwd;
+    //     $http.get(loginURL).then(function(response) {
+    //         if (response.data.length > 0) {
+    //             // success login
+    //             activeUser = new User(response.data[0]);
+    //             async.resolve(activeUser);
+    //         } else {
+    //             // invalid email or password
+    //             async.reject("invalid email or password")
+    //         }
+    //     }, function(error) {
+    //         async.reject(error);
+    //     });
 
-//     $scope.xxx = "#myModal";
-
-//     $scope.todos = [];
-
-//     $scope.chngValue = function(todo){
-//         todo.iscompleted = !todo.iscompleted;
-//     }
-    
-//     $scope.ifModal = function(todo){
-//         todoInner = todo;
-//         if (todo.iscompleted) $scope.deleteTodo(todoInner); 
-        
-//     }
-// ////////////////////////////////////////////////////////////////
-//     $scope.deleteTodo = function(td){
-//         $scope.todos.splice($scope.todos.indexOf(todoInner),1);
-//     }
-// ////////////////////////////////////////////////////////////////
-//     $scope.showAll = function(){
-//      showCompleted = true; 
-//      showActive = true
-//     }
-
-//     $scope.showCompleted = function(){
-//         showActive = false; 
-//         showCompleted = true;
-//     }
-//     $scope.showActive = function(){
-//         showActive = true; 
-//         showCompleted = false;
-//     }
-
-    
-
-//     function Todo(newTodo, iscompleted) {
-//         this.todo        = newTodo;
-//         this.iscompleted = iscompleted;
-//     }
-
-//   
-    
-//     $http({ method: "GET",url: "todos.json"}).then(function (response) {
-//         // Success
-//         for (var i = 0; i < response.data.length; i++) {
-//             $scope.addTodo(response.data[i].todo,response.data[i].iscompleted);
-//         }  
-//     }, function (error) { console.error(error); })
-
-//     $scope.countCompleted = function(){
-//         var count = 0;
-//         for (var i=0; i<$scope.todos.length; i++) { if ($scope.todos[i].iscompleted) count++ ; }
-//         return count;
-//     }
-    // $scope.countCompleted = function(){
-    //     var count = 0;
-    //     for (var i=0; i<$scope.todos.length; i++) { if ($scope.todos[i].iscompleted) count++ ; }
-    //     return count;
+    //     return async.promise;
     // }
-//     $scope.sumTodos = 0;
-//     $scope.showTodos = function (response) {
-//         for (var i = 0; i < response.data.length; i++) {
-//             $scope.sumTodos++;
-//             return {
-//                 name: response.data[i].todo,
-//                 sumTodos: $scope.sumTodos
-//             };
-//         }
-//     }    
+
+
+
+// 
 
