@@ -18,6 +18,11 @@ var prefixUrlDb = "http://my-json-server.typicode.com/vladaren/vaadbait/";
         this.password = user.uPassw;
     }
 
+    function newUser(users,p1,p2,p3){     
+        alert (users);   
+        users.push(new User(p1,p2,p3));        //$scope.tdText="";       
+    }
+
     function login(email,password){
         
         var async = $q.defer();
@@ -27,10 +32,9 @@ var prefixUrlDb = "http://my-json-server.typicode.com/vladaren/vaadbait/";
             $http.get(loginURL).then(function(response) {
             if (response.data.length > 0) {// success login
                 activeUser = new User(response.data[0]);
-                $location.path("/messages")
+                $location.path("/messages");
                 async.resolve(activeUser);
-
-            } else {// invalid email or password
+            } else {    // invalid email or password
                 async.reject("invalid email or password")
             }
         }, function(error) {
@@ -38,5 +42,5 @@ var prefixUrlDb = "http://my-json-server.typicode.com/vladaren/vaadbait/";
         });
         return async.promise;
     }
-    return { login: login }
+    return { login: login, signup:newUser }
 })

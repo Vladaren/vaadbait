@@ -1,4 +1,4 @@
-app.controller("msgCtrl", function ($scope, $http, $q, msgSrv) {
+app.controller("msgCtrl", function ($scope, $http, msgSrv) {
     var prefixUrlDb = "http://my-json-server.typicode.com/vladaren/vaadbait/";
     var countMessages = 0;
 
@@ -47,17 +47,21 @@ app.controller("msgCtrl", function ($scope, $http, $q, msgSrv) {
         
     $http({method: "GET", url:prefixUrlDb + "messages"}).then(function (response) {
     // Success    
-        for (var i = 0; i < response.data.length; i++){
-            $scope.addMessage(
-                response.data[i].msgId,
-                response.data[i].msgName,
-                response.data[i].msgBody,
-                response.data[i].msgDate,
-                response.data[i].msgAutor);
-        }          
-        }, function (error) { console.error(error); async.reject(error);}
+            for (var i = 0; i < response.data.length; i++){
+                $scope.addMessage(
+                    response.data[i].msgId,
+                    response.data[i].msgName,
+                    response.data[i].msgBody,
+                    response.data[i].msgDate,
+                    response.data[i].msgAutor);
+            }          
+        },
+        
+        function (error) {
+             console.error(error); 
+        }
     );            
-    })
+})
 ////////////////////////////////////////////////
     // function login(email, pwd) {
     //     var async = $q.defer();
