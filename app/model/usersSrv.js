@@ -5,7 +5,7 @@ app.factory("userSrv", function($http, $q, $location) {
     var activeUser = "";  
    
     var users=[];
-
+    var dbIsReaded = false;
     //if (getUsersFromDB()).then
     
     //alert ("srv:" + users);   
@@ -16,33 +16,41 @@ app.factory("userSrv", function($http, $q, $location) {
         this.password   = uPassw;
     }
 
+    //getUsersFromDB().then(function(resp){   users = resp;  });
+    
     function getAllUsers(){
+        //return users;
+        debugger;
         return getUsersFromDB();
     }
 
     function getUsersFromDB(){
-        var async = $q.defer();
-        var dbUsersURL = prefixUrlDb + "users";
-
-        $http.get(dbUsersURL).then(function(response) {
-            if (response.data.length > 0) {// success login
-                for (var i = 0; i < response.data.length; i++){
-                    users.push(new User (
-                        response.data[i].uName,
-                        response.data[i].uMail,
-                        response.data[i].uPassw ));
-                }       
-                //alert (p1+p2+p3);   
-                async.resolve(users);
-            } else {
-               // alert("Data users error");
-                async.reject("Data users error")
-            }
-        }, function(error) {
-        //    alert("async.reject(error)");
-            async.reject(error);
-        });       
-        return async.promise;
+   //     if(!dbIsReaded){
+       debugger;
+            var async = $q.defer();
+            var dbUsersURL = prefixUrlDb + "users";
+            users=[];
+            $http.get(dbUsersURL).then(function(response) {
+                if (response.data.length > 0) {// success login
+                    for (var i = 0; i < response.data.length; i++){
+                        users.push(new User (
+                            response.data[i].uName,
+                            response.data[i].uMail,
+                            response.data[i].uPassw ));
+                    }       
+                    //alert (p1+p2+p3);   
+                    async.resolve(users);
+                    dbIsReaded = true;
+                } else {
+                // alert("Data users error");
+                    async.reject("Data users error")
+                }
+            }, function(error) {
+            //    alert("async.reject(error)");
+                async.reject(error);
+            });       
+            return async.promise;
+   //     }
     }     
 
     function newUser(p1,p2,p3){     

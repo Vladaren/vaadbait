@@ -1,6 +1,9 @@
-<h1>All Users</h1>
-<div> 
+<div ng-controller="userCtrl">
+
+<h1>All Users</h1>sss {{test}} 
+<div ng-init="getAllUsers();" > 
     <div ng-repeat="user in users" >
           <tmpl-user></tmpl-user> 
     </div>
+</div>
 </div>
