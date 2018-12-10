@@ -1,5 +1,5 @@
 app.directive("tmplMessage", function() {
-    return {
-      templateUrl: "app/msg/message.html"
-    };
-  });
+  return {
+    templateUrl: "app/msg/message.html"
+  };
+});

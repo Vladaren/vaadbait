@@ -58,7 +58,7 @@ app.controller("msgCtrl", function ($scope, $http, msgSrv) {
         },
         
         function (error) {
-             console.error(error); 
+//             console.error(error); 
         }
     );            
 })
