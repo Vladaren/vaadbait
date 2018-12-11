@@ -2,14 +2,12 @@ app.controller("userCtrl", function ($scope,userSrv, $location) {
    //$scope.test="test2";
    
    $scope.getAllUsers = function() {
-    $scope.users = userSrv.getAllUsers();
-    // userSrv.getUsersFromDB().then(function(resp){
-    //  //   debugger;
-    //     $scope.users = resp;
-    //     //alert ( "users.length  =" + $scope.users.length);
-    // });
-    
-   }
+        //$scope.users = userSrv.getAllUsers();
+        userSrv.getAllUsers().then(function(resp){
+        //   debugger;
+            $scope.users = resp;       // alert ( "resp.length  =" + resp.length);
+        }, function(error) { })
+    }  
   
     // alert ( "users.length  =" + users.length);// + "last user"" $scope.users);
 

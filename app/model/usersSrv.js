@@ -18,8 +18,8 @@ app.factory("userSrv", function($http, $q, $location) {
     //getUsersFromDB().then(function(resp){   users = resp;  });
     
     function getAllUsers(){
-        getUsersFromDB()//.then(function(){});
-       return users;//getUsersFromDB();
+//.then(function(usrs){           users = usrs;       });
+       return getUsersFromDB();
     }
 
     function getUsersFromDB(){
@@ -39,8 +39,7 @@ app.factory("userSrv", function($http, $q, $location) {
                                 response.data[i].uMail,
                                 response.data[i].uPassw ));
                         }                      
-                        //async.resolve();
-                        //async.resolve(users);
+                        async.resolve(users);
                         dbIsReaded = true;
                     } else { async.reject("Data users error")}
                 }, 
