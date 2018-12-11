@@ -2,15 +2,15 @@
     "users":
       [
        {
-           "uName":"U.Name1",
+           "uName":"John",
            "uMail":"u1@gmail.com",
            "uPassw":"123"
        },{
-           "uName":"U.Name2",
+           "uName":"Yosi",
            "uMail":"u2@gmail.com",
            "uPassw":"u2pass"
        },{
-           "uName":"U.Name3",
+           "uName":"Tsipi",
            "uMail":"u3@gmail.com",
            "uPassw":"u3pass"
        }

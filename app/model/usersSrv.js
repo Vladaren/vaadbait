@@ -6,8 +6,7 @@ app.factory("userSrv", function($http, $q, $location) {
    
     var users=[];
     var dbIsReaded = false;
-    //if (getUsersFromDB()).then
-    
+    //if (getUsersFromDB()).then    
     //alert ("srv:" + users);   
 
     function User(uName, uMail,uPassw){
@@ -19,38 +18,34 @@ app.factory("userSrv", function($http, $q, $location) {
     //getUsersFromDB().then(function(resp){   users = resp;  });
     
     function getAllUsers(){
-        //return users;
-        debugger;
-        return getUsersFromDB();
+        getUsersFromDB()
+//     .then(function(){});
+       return users;//getUsersFromDB();
     }
 
     function getUsersFromDB(){
-   //     if(!dbIsReaded){
-       debugger;
+        if(!dbIsReaded){
             var async = $q.defer();
             var dbUsersURL = prefixUrlDb + "users";
-            users=[];
-            $http.get(dbUsersURL).then(function(response) {
-                if (response.data.length > 0) {// success login
-                    for (var i = 0; i < response.data.length; i++){
-                        users.push(new User (
-                            response.data[i].uName,
-                            response.data[i].uMail,
-                            response.data[i].uPassw ));
-                    }       
-                    //alert (p1+p2+p3);   
-                    async.resolve(users);
-                    dbIsReaded = true;
-                } else {
-                // alert("Data users error");
-                    async.reject("Data users error")
-                }
-            }, function(error) {
-            //    alert("async.reject(error)");
-                async.reject(error);
-            });       
+//          users=[];
+            $http.get(dbUsersURL).then(
+                function(response) {
+                    if (response.data.length > 0) {// success login
+                        for (var i = 0; i < response.data.length; i++){
+                            users.push(new User (
+                                response.data[i].uName,
+                                response.data[i].uMail,
+                                response.data[i].uPassw ));
+                        }                      
+                        async.resolve();//async.resolve(users);
+                        dbIsReaded = true;
+                    } else { async.reject("Data users error")}
+                }, 
+                function(error) { async.reject(error); }
+            );       
+                
             return async.promise;
-   //     }
+        }
     }     
 
     function newUser(p1,p2,p3){     
@@ -80,6 +75,7 @@ app.factory("userSrv", function($http, $q, $location) {
     return { 
         login: login, 
         signup:newUser, 
-        getAllUsers:getAllUsers
+        getAllUsers:getAllUsers,
+        getUsersFromDB:getUsersFromDB
     }
 })
