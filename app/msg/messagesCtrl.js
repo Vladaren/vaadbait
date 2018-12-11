@@ -1,5 +1,5 @@
 app.controller("msgCtrl", function ($scope, $http, msgSrv) {
-    var prefixUrlDb = "http://my-json-server.typicode.com/vladaren/vaadbait/";
+    var prefixUrlDb = "https://my-json-server.typicode.com/vladaren/vaadbait/";
     var countMessages = 0;
 
     //alert($scope.user);
