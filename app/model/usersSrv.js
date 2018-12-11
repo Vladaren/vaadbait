@@ -18,14 +18,16 @@ app.factory("userSrv", function($http, $q, $location) {
     //getUsersFromDB().then(function(resp){   users = resp;  });
     
     function getAllUsers(){
-        getUsersFromDB()
-//     .then(function(){});
+        getUsersFromDB()//.then(function(){});
        return users;//getUsersFromDB();
     }
 
     function getUsersFromDB(){
-        if(!dbIsReaded){
-            var async = $q.defer();
+        
+        var async = $q.defer();
+
+        if(dbIsReaded){ async.resolve(users); }
+        else {   
             var dbUsersURL = prefixUrlDb + "users";
 //          users=[];
             $http.get(dbUsersURL).then(
@@ -37,15 +39,15 @@ app.factory("userSrv", function($http, $q, $location) {
                                 response.data[i].uMail,
                                 response.data[i].uPassw ));
                         }                      
-                        async.resolve();//async.resolve(users);
+                        //async.resolve();
+                        //async.resolve(users);
                         dbIsReaded = true;
                     } else { async.reject("Data users error")}
                 }, 
                 function(error) { async.reject(error); }
-            );       
-                
-            return async.promise;
+            );                            
         }
+        return async.promise;
     }     
 
     function newUser(p1,p2,p3){     
