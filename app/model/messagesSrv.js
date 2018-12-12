@@ -8,5 +8,6 @@ app.factory("msgSrv", function($http, $q) {
     function getUser(){
         return user;
     }
+    
     return { user: getUser, letUser:letUser }
 })

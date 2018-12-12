@@ -77,6 +77,6 @@ app.factory("userSrv", function($http, $q, $location) {
         login: login, 
         signup:newUser, 
         getAllUsers:getAllUsers,
-        getUsersFromDB:getUsersFromDB
+        // getUsersFromDB:getUsersFromDB
     }
 })
