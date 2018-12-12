@@ -4,19 +4,14 @@ app.factory("voteSrv", function($http, $q, $location) {
    
     var votes=[];
     var dbIsReaded = false;
-    //if (getUsersFromDB()).then    
-    //alert ("srv:" + users);   
 
     function Vote(voteName, voteText, voteResult){
         this.voteName   = voteName;
         this.voteText   = voteText;
         this.voteResult = voteResult;
     }
-
-    //getUsersFromDB().then(function(resp){   users = resp;  });
     
     function getAllVotes(){
-//.then(function(usrs){           users = usrs;       });
        return getVotesFromDB();
     }
 
@@ -27,12 +22,11 @@ app.factory("voteSrv", function($http, $q, $location) {
         if(dbIsReaded){ async.resolve(votes); }
         else {   
             var dbvotesURL = prefixUrlDb + "votes";
-//          users=[];
             $http.get(dbvotesURL).then(
                 function(response) {
                     if (response.data.length > 0) {// success login
                         for (var i = 0; i < response.data.length; i++){
-                            users.push(new User (
+                            votes.push(new Vote(
                                 response.data[i].voteName,
                                 response.data[i].voteText,
                                 response.data[i].voteResult ));
@@ -47,13 +41,11 @@ app.factory("voteSrv", function($http, $q, $location) {
         return async.promise;
     }     
 
-    function newVote(p1,p2,p3){     
-        //getUsersFromDB().then(    //).
+    function newVote(p1,p2,p3){             
         getVotesFromDB(); 
-        users.push(new Vote(p1,p2,p3));               
+        votes.push(new Vote(p1,p2,p3));               
         return votes[votes.length - 1];
     }
-
 
     return { 
         newVote:newVote, 

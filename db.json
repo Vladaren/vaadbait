@@ -4,12 +4,12 @@
         {
           "voteName":"Cleaning yard",
           "voteText":"Are you agree to pay 10$ for clean yard?",
-          "voteResult":[4,3,2]
+          "voteResult":{"yes":4,"no":3,"abstain":2}
         },
         {
           "voteName":"broom",
-          "voteText":"Are you agree to buy a broom?",
-          "voteResult":[5,5,1]
+          "voteText":"Who is best?",
+          "voteResult":{"Moti":14,"Yosi":3}
         }
     ],
     "users":
