@@ -13,8 +13,7 @@ app.controller("userCtrl", function ($scope, userSrv, $location) {
 
     $scope.signUp = function() {       //alert ($scope.users) // 
         userSrv.signup($scope.uName, $scope.uEmail, $scope.uPassw);
-        $location.path("/users");
-        // alert ($scope.users)
+        $location.path("/users");        // alert ($scope.users)
     }
 
     $scope.logIn = function() {

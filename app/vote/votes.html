@@ -1,6 +1,6 @@
 <h1>Votes</h1>
 <div ng-init="getAllVotes()" > 
-    <div ng-repeat="vote in votes" >
+    <div ng-repeat="vote in votes track by $index" ng-init="parentIndex = $index" >
           <tmpl-vote></tmpl-vote> 
     </div>
 </div>

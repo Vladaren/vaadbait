@@ -1,16 +1,20 @@
 app.controller("voteCtrl", function ($scope, $http, voteSrv ) {
-    
+  
+    $scope.getKeys = function(obj) {
+        return Object.keys(obj);
+    }
+
     $scope.getAllVotes = function() {
         voteSrv.getAllVotes().then(function(resp){
-            $scope.votes = resp;       // alert ( "resp.length  =" + resp.length);
+            $scope.votes = resp;    
         }, function(error) { })
     }  
 
-    $scope.sendVoteChoise = function(vote,option){
-        //alert($scope.value);
-        //alert($scope.votes.voteName);
-        //alert(vote.voteResult[value]);
-        alert(vote+option);
-        //alert(vote.voteName);
+    $scope.sendVoteChoise = function(vote){
+       alert(vote.voteId + "/" +$scope.option);    
+    }
+
+    $scope.clicked = function(x){
+        $scope.option = x;
     }
 })
