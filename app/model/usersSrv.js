@@ -1,6 +1,6 @@
 app.factory("userSrv", function($http, $q, $location) {
 
-    var prefixUrlDb = "http://my-json-server.typicode.com/vladaren/vaadbait/";
+    var prefixUrlDb = "https://my-json-server.typicode.com/vladaren/vaadbait/";
 
     var activeUser = "";  
    
@@ -77,6 +77,6 @@ app.factory("userSrv", function($http, $q, $location) {
         login: login, 
         signup:newUser, 
         getAllUsers:getAllUsers,
-        getUsersFromDB:getUsersFromDB
+        // getUsersFromDB:getUsersFromDB
     }
 })
