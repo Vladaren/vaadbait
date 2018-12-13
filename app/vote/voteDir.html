@@ -1,13 +1,16 @@
 <form id="formvote" class="formVaadBait">
     <!-- <div class="form-group" ng-init="uEmail='u1@gmail.com';uPassw='u1pass'" > -->
-    <div class="form-group" >
+    <div class="form-group">
        {{vote.voteText}}
-       <br>  
-        <input type="radio"  ng-model="option" value="yes">Yes<br>
-        <input type="radio"  ng-model="option" value="no">No<br>
-        <input type="radio"  ng-model="option" value="abstained">Abstained
-        <!-- <input type="radio"  ng-model="vote.voteResult[0]++" value="0">Yes<br> -->
+       {{Object.keys(vote)}}
 
+       <br>  
+       <div ng-repeat="key in Object.keys(vote.voteResult)">
+            <input type="radio"  ng-model="option" value="yes">Yes<br>
+            <input type="radio"  ng-model="option" value="no">No<br>
+            <input type="radio"  ng-model="option" value="abstained">Abstained
+            <!-- <input type="radio"  ng-model="vote.voteResult[0]++" value="0">Yes<br> -->
+        </div>
     </div>
        <div class="form-group">
        <button type="button" class="btn btn-primery" ng-click="sendVoteChoise(vote,option)">Send</button>
