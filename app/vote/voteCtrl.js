@@ -1,4 +1,4 @@
-app.controller("voteCtrl", function ($scope, $http, voteSrv ) {
+app.controller("voteCtrl", function ($scope, voteSrv) {
   
     $scope.getKeys = function(obj) {
         return Object.keys(obj);
@@ -11,10 +11,15 @@ app.controller("voteCtrl", function ($scope, $http, voteSrv ) {
     }  
 
     $scope.sendVoteChoise = function(vote){
-       alert(vote.voteId + "/" +$scope.option);    
+    
+       alert(vote.voteResult[$scope.option] + "/" + $scope.option);    
+       vote.voteResult[$scope.option]++;
+       alert(vote.voteResult[$scope.option]);    
     }
 
     $scope.clicked = function(x){
         $scope.option = x;
     }
+
+    
 })

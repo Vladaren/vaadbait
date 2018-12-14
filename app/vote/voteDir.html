@@ -1,11 +1,12 @@
 <div id="formvote" class="formVaadBait">
     <!-- <div class="form-group" ng-init="uEmail='u1@gmail.com';uPassw='u1pass'" > -->
-    {{vote.voteId + " " + vote.voteText}}
+    {{vote.voteText}}
     <br>
     <form>  
         <div ng-repeat="key in getKeys(vote.voteResult)" >
             <input type="radio" name="nnn" ng-click="clicked(key)" value="{{key}}">{{key}}<br>         
         </div> 
         <button type="button" ng-click="sendVoteChoise(vote) ;">Send</button> 
-    </form>   
+    </form>
 </div>
+<br>   

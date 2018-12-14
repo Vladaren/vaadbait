@@ -2,17 +2,19 @@ app.factory("userSrv", function($http, $q, $location) {
 
     var prefixUrlDb = "https://my-json-server.typicode.com/vladaren/vaadbait/";
 
-    var activeUser = "";  
+    var activeUser = "au";  
    
     var users=[];
     var dbIsReaded = false;
     //if (getUsersFromDB()).then    
     //alert ("srv:" + users);   
 
-    function User(uName, uMail,uPassw){
-        this.name       = uName;
-        this.email      = uMail;
-        this.password   = uPassw;
+    function User(uId,uName, uMail,uPassw,uVotesIds){
+        this.uId       = uId;
+        this.name      = uName;
+        this.email     = uMail;
+        this.password  = uPassw;
+        this.uVotesIds = uVotesIds
     }
 
     //getUsersFromDB().then(function(resp){   users = resp;  });
@@ -23,21 +25,19 @@ app.factory("userSrv", function($http, $q, $location) {
     }
 
     function getUsersFromDB(){
-        
         var async = $q.defer();
-
         if(dbIsReaded){ async.resolve(users); }
         else {   
             var dbUsersURL = prefixUrlDb + "users";
-//          users=[];
             $http.get(dbUsersURL).then(
                 function(response) {
                     if (response.data.length > 0) {// success login
                         for (var i = 0; i < response.data.length; i++){
-                            users.push(new User (
-                                response.data[i].uName,
-                                response.data[i].uMail,
-                                response.data[i].uPassw ));
+                            users.push(new User (response.data[i].uId,
+                                                 response.data[i].uName,
+                                                 response.data[i].uMail,
+                                                 response.data[i].uPassw,
+                                                 response.data[i].uVotesIds));
                         }                      
                         async.resolve(users);
                         dbIsReaded = true;
@@ -77,6 +77,7 @@ app.factory("userSrv", function($http, $q, $location) {
         login: login, 
         signup:newUser, 
         getAllUsers:getAllUsers,
+        activeUser:activeUser   
         // getUsersFromDB:getUsersFromDB
     }
 })

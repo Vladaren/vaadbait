@@ -17,7 +17,12 @@ app.controller("userCtrl", function ($scope, userSrv, $location) {
     }
 
     $scope.logIn = function() {
-        userSrv.login($scope.uEmail, $scope.uPassw);
+        userSrv.login($scope.uEmail, $scope.uPassw).then(function(activeUser){
+            //$scope.activeUser = activeUser;//userSrv.activeUser;
+            $scope.activeUser = userSrv.activeUser;
+        }, function(error) { })
+            
+            
     }
 
 })
