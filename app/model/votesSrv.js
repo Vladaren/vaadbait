@@ -1,7 +1,7 @@
 app.factory("voteSrv", function($http, $q, $location) {
 
     var prefixUrlDb = "https://my-json-server.typicode.com/vladaren/vaadbait/";
-    var votesId = 0; 
+    var votesId = 3; 
     var votes=[];
     var dbIsReaded = false;
 

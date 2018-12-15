@@ -7,15 +7,8 @@ app.controller("msgCtrl", function ($scope, $http, msgSrv) {
     $scope.messages = [];
     $scope.msgName = "msg Name Temp";
     $scope.msgBody = "msg Body Temp";
-    
-    // actorSrv.getAll().then(function(actors) {
-    //     $scope.actors = actors;      
-    //   }, function(error) {      
-    //     $log.error(error);
-    // });
 
     var getUserName = function(){
-        //alert(msgSrv.user());
         return msgSrv.user() ;
     };
 
@@ -26,7 +19,6 @@ app.controller("msgCtrl", function ($scope, $http, msgSrv) {
             $scope.msgBody,
             "$scope.msgDate",
             getUserName());
-            //alert('new msg.autor = ' + $scope.messages[$scope.messages.length-1].msgAutor);
     }
 
     $scope.filtermessages = function(){

@@ -1,6 +1,6 @@
 app.directive("tmplVote", function() {               
   return {
-    templateUrl: "app/vote/voteDir.html"
+    templateUrl: "app/votes/voteDir.html"
   };
 });
   

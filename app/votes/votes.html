@@ -1,5 +1,4 @@
-<div ng-init="getAllUsers();" > 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -11,14 +10,19 @@
                 </li>            
                 <li class="nav-item">
                     <a class="nav-link" href="#!/votes">Votes</a>
-                </li>               
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/users">Users</a>
+                </li>
             </ul>                  
         </div>
     </nav>
 
-        <h1>Hello, dear {{getActiveUser().name}}!</h1>
-        <h1>All Users</h1>
-    <div ng-repeat="user in users" >            
-          <tmpl-user></tmpl-user> 
+<h1>Hello, dear {{getActiveUser().name}}!</h1>
+<new-vote></new-vote>
+<h1>Votes</h1>
+<div ng-init="getAllVotes()" > 
+    <div ng-repeat="vote in votes track by $index" ng-init="parentIndex = $index" >
+          <tmpl-vote></tmpl-vote> 
     </div>
 </div>
