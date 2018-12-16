@@ -2,15 +2,15 @@ app.factory("userSrv", function($http, $q, $location) {
 
     var prefixUrlDb = "https://my-json-server.typicode.com/vladaren/vaadbait/";
 
+    var usersId = 3;
+
     var activeUser = null;  
-   
     var users=[];
     var dbIsReaded = false;
     //if (getUsersFromDB()).then    
     //alert ("srv:" + users);   
 
-    function User(u)//Id,uName,uMail,uPassw,uVotesIds)
-    {
+    function User(u) {//Id,uName,uMail,uPassw,uVotesIds)
         this.uId       = u.uId;
         this.name      = u.uName;
         this.email     = u.uMail;
@@ -20,8 +20,7 @@ app.factory("userSrv", function($http, $q, $location) {
 
     //getUsersFromDB().then(function(resp){   users = resp;  });
     
-    function getAllUsers(){
-//.then(function(usrs){           users = usrs;       });
+    function getAllUsers(){        //.then(function(usrs){           users = usrs;       });
        return getUsersFromDB();
     }
 
@@ -35,11 +34,6 @@ app.factory("userSrv", function($http, $q, $location) {
                     if (response.data.length > 0) {// success login
                         for (var i = 0; i < response.data.length; i++){
                             users.push(new User (response.data[i]));
-                                // .uId,
-                                //                  response.data[i].uName,
-                                //                  response.data[i].uMail,
-                                //                  response.data[i].uPassw,
-                                //                  response.data[i].uVotesIds
                         }                      
                         async.resolve(users);
                         dbIsReaded = true;
@@ -51,17 +45,28 @@ app.factory("userSrv", function($http, $q, $location) {
         return async.promise;
     }     
 
-    function newUser(p1,p2,p3){     
+    function signUp(p1,p2,p3){     
         //getUsersFromDB().then(    //).
-        getUsersFromDB(); 
-        var u = {"uId":"xxx","uMame":p1,"uMail":p2,"uPassw":p3,"uVotesIds":"xxx"};
+//      getUsersFromDB(); 
+        var u = {"uId":"u"+ (usersId++),"uName":p1,"uMail":p2,"uPassw":p3,"uVotesIds":[]};
         users.push(new User(u));               
-        return users[users.length - 1];
+//      return users[users.length - 1];
     }
 
     function login(email,password){        
         var async = $q.defer();
-        var loginURL = prefixUrlDb + "users?" + "uMail=" + email + "&uPassw=" + password; //+ "&qq=oo";
+        
+        if (users.length > 0 ) {
+            for (var i=0; i<users.length; i++ ){
+                if (users[i].email == email && users[i].password == password) {
+                     activeUser = users[i];
+                     async.resolve(activeUser);
+                     return async.promise; 
+                }
+            }
+        }//return async.promise;
+
+        var loginURL = prefixUrlDb + "users?" + "uMail=" + email + "&uPassw=" + password; 
 
             $http.get(loginURL).then(function(response) {
             if (response.data.length > 0) {// success login
@@ -84,7 +89,7 @@ app.factory("userSrv", function($http, $q, $location) {
 
     return { 
         login: login, 
-        signup:newUser, 
+        signup:signUp, 
         getAllUsers:getAllUsers,
         getActiveUser:getActiveUser   
         // getUsersFromDB:getUsersFromDB

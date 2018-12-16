@@ -1,6 +1,6 @@
-app.controller("msgCtrl", function ($scope, $http, msgSrv) {
+app.controller("msgCtrl", function ($scope, $http, msgSrv, userSrv) {
     var prefixUrlDb = "https://my-json-server.typicode.com/vladaren/vaadbait/";
-    var countMessages = 0;
+    var countMessages = 4;
 
     //alert($scope.user);
     
@@ -8,17 +8,21 @@ app.controller("msgCtrl", function ($scope, $http, msgSrv) {
     $scope.msgName = "msg Name Temp";
     $scope.msgBody = "msg Body Temp";
 
-    var getUserName = function(){
-        return msgSrv.user() ;
+    $scope.getActiveUser = function(){
+        return userSrv.getActiveUser() ;
     };
 
+    $scope.addMessage = function(p1,p2,p3,p4,p5){        
+        $scope.messages.push(new Message(p1,p2,p3,p4,p5));        //$scope.tdText="";       
+    }
+
     $scope.newMessage = function(){
-        $scope.addMessage(
-            "$scope.msgId",
-            $scope.msgName,
-            $scope.msgBody,
-            "$scope.msgDate",
-            getUserName());
+        $scope.addMessage(  "msg"+ (countMessages++),
+                            $scope.msgName,
+                            $scope.msgBody,
+                            "ComingSoon",
+                            userSrv.getActiveUser().name
+                        )
     }
 
     $scope.filtermessages = function(){
@@ -31,10 +35,6 @@ app.controller("msgCtrl", function ($scope, $http, msgSrv) {
         this.msgBody    = msgBody   ;
         this.msgDate    = msgDate   ;
         this.msgAutor   = msgAutor  ;          
-    }
-
-    $scope.addMessage = function(p1,p2,p3,p4,p5){        
-        $scope.messages.push(new Message(p1,p2,p3,p4,p5));        //$scope.tdText="";       
     }
         
     $http({method: "GET", url:prefixUrlDb + "messages"}).then(function (response) {
@@ -50,33 +50,7 @@ app.controller("msgCtrl", function ($scope, $http, msgSrv) {
         },
         
         function (error) {
-//             console.error(error); 
+             console.error(error); 
         }
     );            
 })
-////////////////////////////////////////////////
-    // function login(email, pwd) {
-    //     var async = $q.defer();
-
-    //     var loginURL = "http://my-json-server.typicode.com/nirch/recipe-book-v3/users?email=" +
-    //         email + "&pwd=" + pwd;
-    //     $http.get(loginURL).then(function(response) {
-    //         if (response.data.length > 0) {
-    //             // success login
-    //             activeUser = new User(response.data[0]);
-    //             async.resolve(activeUser);
-    //         } else {
-    //             // invalid email or password
-    //             async.reject("invalid email or password")
-    //         }
-    //     }, function(error) {
-    //         async.reject(error);
-    //     });
-
-    //     return async.promise;
-    // }
-
-
-
-// 
-

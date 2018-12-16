@@ -36,20 +36,20 @@
     
   "messages":[{ 
       "msgId":"1",
-      "msgName":"MsgName1",
-      "msgBody":"msgBody1",
+      "msgName":"Message Name 1",
+      "msgBody":"Text message body1 ",
       "msgDate":"1967-10-21",
       "msgAutor":"a1"
     },{ 
       "msgId":"2",
-      "msgName":"MsgName2",
-      "msgBody":"msgBody2",
+      "msgName":"Message Name 2",
+      "msgBody":"Text message body 2",
       "msgDate":"1967-10-22",
       "msgAutor":"a2"
     },{ 
       "msgId":"3",
-      "msgName":"MsgName3",
-      "msgBody":"msgBody3",
+      "msgName":"Message Name 3",
+      "msgBody":"Text message body 2",
       "msgDate":"1967-10-23",
       "msgAutor":"a3"
     }
