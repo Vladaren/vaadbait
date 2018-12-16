@@ -1,11 +1,12 @@
 app.factory("voteSrv", function($http, $q, $location) {
 
     var prefixUrlDb = "https://my-json-server.typicode.com/vladaren/vaadbait/";
-   
+    var votesId = 3; 
     var votes=[];
     var dbIsReaded = false;
 
-    function Vote(voteName, voteText, voteResult){
+    function Vote(voteId, voteName, voteText, voteResult){
+        this.voteId     = voteId;
         this.voteName   = voteName;
         this.voteText   = voteText;
         this.voteResult = voteResult;
@@ -27,6 +28,7 @@ app.factory("voteSrv", function($http, $q, $location) {
                     if (response.data.length > 0) {// success login
                         for (var i = 0; i < response.data.length; i++){
                             votes.push(new Vote(
+                                response.data[i].voteId,
                                 response.data[i].voteName,
                                 response.data[i].voteText,
                                 response.data[i].voteResult ));
@@ -43,7 +45,7 @@ app.factory("voteSrv", function($http, $q, $location) {
 
     function newVote(p1,p2,p3){             
         getVotesFromDB(); 
-        votes.push(new Vote(p1,p2,p3));               
+        votes.push(new Vote(("v"+(votesId++)),p1,p2,p3));               
         return votes[votes.length - 1];
     }
 
