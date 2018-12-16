@@ -23,7 +23,6 @@ app.factory("userSrv", function($http, $q, $location) {
     }
 
     function getUsersFromDB(){
-        
         var async = $q.defer();
 
         if(dbIsReaded){ async.resolve(users); }
