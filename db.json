@@ -1,54 +1,57 @@
 {
-    "votes":
-      [
-        {
-          "voteName":"Cleaning yard",
-          "voteText":"Are you agree to pay 10$ for clean yard?",
-          "voteResult":{"yes":4,"no":3,"abstain":2}
-        },
-        {
-          "voteName":"broom",
-          "voteText":"Who is best?",
-          "voteResult":{"Moti":14,"Yosi":3}
-        }
-    ],
-    "users":
-      [
-       {
-           "uName":"John",
-           "uMail":"u1@gmail.com",
-           "uPassw":"123"
-       },{
-           "uName":"Yosi",
-           "uMail":"u2@gmail.com",
-           "uPassw":"u2pass"
-       },{
-           "uName":"Tsipi",
-           "uMail":"u3@gmail.com",
-           "uPassw":"u3pass"
-       }
-      ],
+  "users":[
+    {
+       "uId":"u1",
+       "uName":"John",
+       "uMail":"u1@gmail.com",
+       "uPassw":"123",
+       "uVotesIds":["v1"]
+    },{
+       "uId":"u2",
+       "uName":"Yosi",
+       "uMail":"u2@gmail.com",
+       "uPassw":"u2pass",
+       "uVotesIds":["v2"]
+    },{
+       "uId":"u3",
+       "uName":"Tsipi",
+       "uMail":"u3@gmail.com",
+       "uPassw":"u3pass",
+       "uVotesIds":["v1","v2"]
+    }
+  ], 
+  
+  "votes":[{
+      "voteId":"v1",
+      "voteName":"Cleaning yard",
+      "voteText":"Are you agree to pay 10$ for clean a yard?",
+      "voteResult":{"yes":4,"no":3,"abstain":2}
+    },{
+      "voteId":"v2",
+      "voteName":"broom",
+      "voteText":"Who is best?",
+      "voteResult":{"Moti":14,"Yosi":3}
+    }
+  ],
     
-    "messages":
-       [
-        { 
-          "msgId":"1",
-          "msgName":"MsgName1",
-          "msgBody":"msgBody1",
-          "msgDate":"1967-10-21",
-          "msgAutor":"a1"
-        },{ 
-          "msgId":"2",
-          "msgName":"MsgName2",
-          "msgBody":"msgBody2",
-          "msgDate":"1967-10-22",
-          "msgAutor":"a2"
-        },{ 
-          "msgId":"3",
-          "msgName":"MsgName3",
-          "msgBody":"msgBody3",
-          "msgDate":"1967-10-23",
-          "msgAutor":"a3"
-        }
-       ]
-   }
+  "messages":[{ 
+      "msgId":"1",
+      "msgName":"Message Name 1",
+      "msgBody":"Text message body1 ",
+      "msgDate":"1967-10-21",
+      "msgAutor":"a1"
+    },{ 
+      "msgId":"2",
+      "msgName":"Message Name 2",
+      "msgBody":"Text message body 2",
+      "msgDate":"1967-10-22",
+      "msgAutor":"a2"
+    },{ 
+      "msgId":"3",
+      "msgName":"Message Name 3",
+      "msgBody":"Text message body 2",
+      "msgDate":"1967-10-23",
+      "msgAutor":"a3"
+    }
+  ]
+}

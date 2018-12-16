@@ -1,3 +1,6 @@
+.novisible{
+    display:none;
+}
 
 .nav-item-right{
     /* width:100%; */
@@ -28,7 +31,7 @@ input{
 
 .formVaadBait{
     width: 300px;
-    padding: 0 10px;
+    padding: 5px 10px;
     margin: 0 auto;
     border-radius: 5px;
     border: 1px solid red;  
