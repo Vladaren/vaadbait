@@ -39,19 +39,19 @@
       "msgName":"Message Name 1",
       "msgBody":"Text message body1 ",
       "msgDate":"1967-10-21",
-      "msgAutor":"a1"
+      "msgAutor":"Putin"
     },{ 
       "msgId":"2",
       "msgName":"Message Name 2",
       "msgBody":"Text message body 2",
       "msgDate":"1967-10-22",
-      "msgAutor":"a2"
+      "msgAutor":"Churchill"
     },{ 
       "msgId":"3",
       "msgName":"Message Name 3",
       "msgBody":"Text message body 2",
       "msgDate":"1967-10-23",
-      "msgAutor":"a3"
+      "msgAutor":"Netaniyahu"
     }
   ]
 }
