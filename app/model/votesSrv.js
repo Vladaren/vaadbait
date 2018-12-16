@@ -45,7 +45,7 @@ app.factory("voteSrv", function($http, $q, $location) {
 
     function newVote(p1,p2,p3){             
         getVotesFromDB(); 
-        votes.push(new Vote(("v"+(votesId++)),p1,p2,p3));               
+        votes.unshift(new Vote(("v"+(votesId++)),p1,p2,p3));               
         return votes[votes.length - 1];
     }
 

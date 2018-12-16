@@ -1,6 +1,6 @@
 <div id="formvote" class="formVaadBait">
     <!-- <div class="form-group" ng-init="uEmail='u1@gmail.com';uPassw='u1pass'" > -->
-        {{vote.voteId}}
+        Vote №: {{vote.voteId}}
         <h6>{{vote.voteName}}</h6>
         {{vote.voteText}}     
     <!-- {{getActiveUser().uVotesIds.includes(vote.voteId)? isvisible="novisibl" : isvisible="" }} -->
@@ -12,8 +12,9 @@
             <div class='{{!getActiveUser().uVotesIds.includes(vote.voteId)? "novisible" : "" }}'>
                {{key}} : {{vote.voteResult[key]}}
             </div>
-        </div> 
-            <button class='{{ getActiveUser().uVotesIds.includes(vote.voteId)? "novisible" : "" }}' type="button" ng-click="sendVoteChoice(vote);">Send</button>   
+        </div>
+        <br>
+         <button class='{{ getActiveUser().uVotesIds.includes(vote.voteId)? "novisible" : "" }}' type="button" ng-click="sendVoteChoice(vote);">Send</button>   
 </div>
 <hr>
 

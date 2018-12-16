@@ -1,4 +1,4 @@
-app.controller("msgCtrl", function ($scope, $http, msgSrv, userSrv) {
+app.controller("msgCtrl", function ($scope, $http, userSrv) {
     var prefixUrlDb = "https://my-json-server.typicode.com/vladaren/vaadbait/";
     var countMessages = 4;
 
@@ -13,7 +13,7 @@ app.controller("msgCtrl", function ($scope, $http, msgSrv, userSrv) {
     };
 
     $scope.addMessage = function(p1,p2,p3,p4,p5){        
-        $scope.messages.push(new Message(p1,p2,p3,p4,p5));        //$scope.tdText="";       
+        $scope.messages.unshift(new Message(p1,p2,p3,p4,p5));        //$scope.tdText="";       
     }
 
     $scope.newMessage = function(){

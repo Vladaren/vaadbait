@@ -1,7 +1,9 @@
 .novisible{
     display:none;
 }
-
+.rightfloat{
+    float: right;
+}
 .nav-item-right{
     /* width:100%; */
     margin-left: 100%;
@@ -22,7 +24,7 @@
 
 .row{    
     margin: 2px;
-    background-color: rgb(160, 130, 130);
+    background-color: rgb(161, 145, 145);
     border: 1px solid black;    
 }
 input{

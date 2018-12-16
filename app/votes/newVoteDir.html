@@ -1,19 +1,31 @@
-<form class="formVaadBait" ng-init='voteName="Tempory Name"; voteText="Tempory Text"; voteOption="option1" '>
+<form class="formVaadBait">
     <!-- <div class="form-group" ng-init="uEmail='u1@gmail.com';uPassw='u1pass'" > -->
     <div class="form-group" >
-        Vote name:
+        New vote name:
         <input type="text" class="form-control" placeholder="Vote Name" ng-model="voteName" >
         Vote text:
         <textarea class="form-control" placeholder="Vote Text" ng-model="voteText" ></textarea><br>
         <h6>{{options.length > 0 ?  "Vote Options:" :""}}</h6>
-        <div ng-repeat="opt in options">:: {{opt}}<br></div>
+        <div ng-repeat="opt in options">
+            <div>
+                :: {{opt}}
+                <button type="button" class="btn rightfloat" 
+                    ng-click="deleteOption($index)"
+                >
+                Delete
+                </button>
+            </div>
+            <br>
+        </div>
         <hr>
         New vote option:        
         <input type="text" class="form-control" placeholder="Vote option" ng-model="voteOption"><br>
+        <h5>{{duplicate}}</h5>
         <button type="button" class="btn" ng-click="addNewOption(voteOption)">Add Option</button>
     </div>
+    <h5>{{twooptions}}</h5>
     <div class="form-group">
-        <button type="button" class="btn btn-primery" ng-click="addNewVote(voteName, voteText, options)">Send</button>
+    <button type="button" class="btn btn-primery" ng-click="addNewVote(voteName, voteText, options)">Send</button>
     </div>
 </form>
     <hr>
