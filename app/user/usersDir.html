@@ -19,9 +19,11 @@
         </div>
     </nav>
 
-        <h1>Hello, dear {{getActiveUser().name}}!</h1>
-        <h1>All Users</h1>
-    <div ng-repeat="user in users" >            
+        <h6>Hello, dear {{getActiveUser().name}}!</h6>
+        <h6>All users:</h6>
+<div class="row"> 
+    <div ng-repeat="user in users"  >            
           <tmpl-user></tmpl-user> 
     </div>
+</div>       
 </div>

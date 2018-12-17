@@ -1,18 +1,6 @@
-<h1>Old Messages</h1>
+<h6>All messages:</h6>
 <div>
     <div ng-repeat="message in messages | filter : filtermessages">
           <tmpl-message></tmpl-message>
     </div>
 </div>
-<!-- <div class="container">        
-        <div class="row" 
-            ng-repeat="message in messages | filter : filtermessages | orderBy : propName : direction" 
-            ng-click="" 
-            ng-class="">
-            <h3 style="text-align:center">{{message.fname+" "+ message.lname}}</h3>
-            <p   style="text-align:center">{{message.birthday | date}}</p>
-            <img style="margin:0 auto; border-radius:25px" ng-src="{{message.imgURL}}" 
-                 width="200px" height="295px">
-            <br>
-            <a style="text-align:center " href="{{message.imdbURL}}" target="_blank ">click me</a>
-        </div> -->

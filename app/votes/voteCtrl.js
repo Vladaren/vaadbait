@@ -30,7 +30,7 @@ app.controller("voteCtrl", function ($location, $scope, voteSrv, userSrv) {
         $scope.twooptions = "";
 
         var objoptions = {};        
-        for (var i=0; i<options.length; i++){
+        for (var i=0; i< options.length; i++){
             objoptions[options[i]] = 0;
         }
         voteSrv.newVote(name,text,objoptions);

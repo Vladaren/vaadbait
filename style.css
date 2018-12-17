@@ -18,15 +18,22 @@
 }
 
 .container{
-    width: 100%;
+    /* width: 100%;
     max-width: 100%;
+    margin: 0 auto; */
+}
+.card{
+    border: 2px solid red;    
+    margin: 5 auto;
 }
 
 .row{    
-    margin: 2px;
-    background-color: rgb(161, 145, 145);
+    margin: 0 auto;
+    background-color: rgb(236, 220, 220);
     border: 1px solid black;    
 }
+ /* .col{}  */
+
 input{
     background-color: rgb(1, 130, 130);
 }

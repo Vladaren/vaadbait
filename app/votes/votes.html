@@ -21,11 +21,13 @@
         </div>
     </nav>
 
-<h1>Hello, dear {{getActiveUser().name}}!</h1>
-<new-vote></new-vote>
-<h1>Votes</h1>
-<div ng-init="getAllVotes()" > 
-    <div ng-repeat="vote in votes track by $index" ng-init="parentIndex = $index" >
-          <tmpl-vote></tmpl-vote> 
+
+    <h5>Hello, dear {{getActiveUser().name}}!</h5>
+    <new-vote></new-vote>
+    <h6>All votes</h6>
+
+    <div ng-init="getAllVotes()" class="row"> 
+        <div ng-repeat="vote in votes track by $index" ng-init="parentIndex = $index" >
+            <tmpl-vote class="col"></tmpl-vote> 
+        </div> 
     </div>
-</div>
