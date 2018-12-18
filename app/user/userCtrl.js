@@ -2,6 +2,8 @@ app.controller("userCtrl", function ($scope, userSrv, $location) {
    //$scope.test="test2";
     $scope.activeUser = null;
 
+    $scope.xxx = "#myModal";
+
     $scope.signOut = function() {
         $scope.activeUser = null;
     }
@@ -25,7 +27,16 @@ app.controller("userCtrl", function ($scope, userSrv, $location) {
         }, function(error) { })   
     }
     
-    $scope.signUp = function() {       
+    $scope.passIsConfirm = false;
+
+    $scope.signUp = function() { 
+
+        if (!userSrv.passwConfirm($scope.uPassw, $scope.passConf)) {        
+           $scope.passIsConfirm = false
+           return;
+        }    
+
+        $scope.passIsConfirm = true;
         userSrv.signup($scope.uName, $scope.uEmail, $scope.uPassw);
         $scope.logIn();      
         $location.path("/login");

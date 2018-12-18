@@ -83,15 +83,15 @@ app.factory("userSrv", function($http, $q, $location) {
         return async.promise;
     }
             
-    function getActiveUser() {
-        return activeUser;
-    }
+    function getActiveUser()     { return activeUser }
+
+    function passwConfirm(p1,p2) { return (p1 == p2) }
 
     return { 
         login: login, 
         signup:signUp, 
         getAllUsers:getAllUsers,
-        getActiveUser:getActiveUser   
-        // getUsersFromDB:getUsersFromDB
+        getActiveUser:getActiveUser,   
+        passwConfirm:passwConfirm
     }
 })
