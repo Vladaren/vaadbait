@@ -28,6 +28,7 @@ app.controller("voteCtrl", function ($location, $scope, voteSrv, userSrv) {
              return;
         }
         $scope.twooptions = "";
+        $scope.duplicate  = "";
 
         var objoptions = {};        
         for (var i=0; i< options.length; i++){

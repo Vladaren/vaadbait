@@ -1,8 +1,22 @@
 app.controller("userCtrl", function ($scope, userSrv, $location) {
-   //$scope.test="test2";
-    $scope.activeUser = null;
+    const modalConfPass = "#modalConfPass"; 
+    
+    $scope.errMsgConfPassw = "";
+    $scope.signUp = function() { 
 
-    $scope.xxx = "#myModal";
+        if (!userSrv.passwConfirm($scope.uPassw, $scope.passConf)) {    //    $scope.passIsConfirm = false;
+            $scope.errMsgConfPassw = modalConfPass;
+            return;
+        }    
+        $scope.xxx = "";
+        // $scope.passIsConfirm = true;
+        userSrv.signup($scope.uName, $scope.uEmail, $scope.uPassw);
+        $scope.logIn();      
+        $location.path("/login");
+    }
+
+
+    $scope.activeUser = null;
 
     $scope.signOut = function() {
         $scope.activeUser = null;
@@ -26,20 +40,4 @@ app.controller("userCtrl", function ($scope, userSrv, $location) {
             $location.path("/messages");
         }, function(error) { })   
     }
-    
-    $scope.passIsConfirm = false;
-
-    $scope.signUp = function() { 
-
-        if (!userSrv.passwConfirm($scope.uPassw, $scope.passConf)) {        
-           $scope.passIsConfirm = false
-           return;
-        }    
-
-        $scope.passIsConfirm = true;
-        userSrv.signup($scope.uName, $scope.uEmail, $scope.uPassw);
-        $scope.logIn();      
-        $location.path("/login");
-    }
-    
 })

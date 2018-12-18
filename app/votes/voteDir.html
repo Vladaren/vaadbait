@@ -7,7 +7,7 @@
      
         <div ng-repeat="key in getKeys(vote.voteResult)" >       
             <div class='{{ getActiveUser().uVotesIds.includes(vote.voteId)? "novisible" : "" }}'>
-                <input type="radio" name="nnn" ng-click="clicked(key)" value="{{key}}">{{key}}<br>
+                <input type="radio" name="nnn" ng-click="clicked(key)" value="{{key}}"> {{key}}<br>
             </div>           
             <div class='{{!getActiveUser().uVotesIds.includes(vote.voteId)? "novisible" : "" }}'>
                {{key}} : {{vote.voteResult[key]}}
