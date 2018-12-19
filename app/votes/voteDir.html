@@ -1,4 +1,5 @@
 <div id="formvote" class="formVaadBait">
+   
     <!-- <div class="form-group" ng-init="uEmail='u1@gmail.com';uPassw='u1pass'" > -->
         Vote №: {{vote.voteId}}
         <h6>{{vote.voteName}}</h6>
@@ -6,15 +7,24 @@
     <!-- {{getActiveUser().uVotesIds.includes(vote.voteId)? isvisible="novisibl" : isvisible="" }} -->
      
         <div ng-repeat="key in getKeys(vote.voteResult)" >       
-            <div class='{{ getActiveUser().uVotesIds.includes(vote.voteId)? "novisible" : "" }}'>
+            <div class='{{getActiveUser().uVotesIds.includes(vote.voteId)? "novisible" : "" }}'>
                 <input type="radio" name="nnn" ng-click="clicked(key)" value="{{key}}"> {{key}}<br>
             </div>           
             <div class='{{!getActiveUser().uVotesIds.includes(vote.voteId)? "novisible" : "" }}'>
-               {{key}} : {{vote.voteResult[key]}}
+               {{key}} :: {{vote.voteResult[key]}}
             </div>
         </div>
         <br>
-         <button class='{{ getActiveUser().uVotesIds.includes(vote.voteId)? "novisible" : "" }}' type="button" ng-click="sendVoteChoice(vote);">Send</button>   
+        <div>
+            <button class='{{ getActiveUser().uVotesIds.includes(vote.voteId)? "novisible" : "" }}' type="button" ng-click="sendVoteChoice(vote);">Send</button>   
+        </div>
+        
+        <!-- <canvas id="pie" 
+            class         = "chart-pie {{!getActiveUser().uVotesIds.includes(vote.voteId)? 'novisible' : '' }}"
+            chart-data    = "updateChart(vote)"
+            chart-labels  = "labels" 
+            chart-options = "chartOptions"
+        >
+        </canvas>    -->
+        
 </div>
-<hr>
-

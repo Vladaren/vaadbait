@@ -6,6 +6,7 @@
         Vote text:
         <textarea class="form-control" placeholder="Vote Text" ng-model="voteText" ></textarea><br>
         <h6>{{options.length > 0 ?  "Vote Options:" :""}}</h6>
+        
         <div ng-repeat="opt in options">
             <div>
                 :: {{opt}}
@@ -18,7 +19,7 @@
             <br>
         </div>
         <hr>
-        <h5 style="color:red;">{{duplicate}}<br>{{twooptions}}</h5>
+        <h5 style="color:red;">{{emptyOption}}<br>{{duplicate}}<br>{{twooptions}}</h5>
         New vote option:        
         
         <input type="text" class="form-control" placeholder="Vote option" ng-model="voteOption"><br>

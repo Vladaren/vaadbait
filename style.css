@@ -1,3 +1,8 @@
+#pie{
+    border: 1px solid blue;
+    width: 100%
+}
+
 .novisible{
     display:none;
 }
@@ -11,20 +16,13 @@
     /* float: right; */
     border: 1px solid black;    
 }
-
 .msgbody{
     background-color:rgb(241, 235, 222);
     border: 1px solid black;    
 }
-
-.container{
-    /* width: 100%;
-    max-width: 100%;
-    margin: 0 auto; */
-}
 .card{
     border: 2px solid red;    
-    margin: 5 auto;
+    margin: 5px;
 }
 
 .row{    

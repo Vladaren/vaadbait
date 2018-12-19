@@ -1,16 +1,33 @@
 app.controller("voteCtrl", function ($location, $scope, voteSrv, userSrv) {
     $scope.options=[];
-    $scope.twooptions = "";
-    $scope.duplicate  = "";
+    $scope.twooptions  = "";
+    $scope.duplicate   = "";
+    $scope.emptyOption = "";
     $scope.voteName   = "Tempory Name"; 
     $scope.voteText   = "Tempory Text"; 
     $scope.voteOption = "option1";
-
+    $scope.data = [];
+//////////////////////////////////////////////////
+    // Chart
+    $scope.chartOptions = { legend: {display: true} };
+       
+    $scope.updateChart = function(vote) {
+        $scope.labels = Object.keys(vote.voteResult) ;
+        return Object.values(vote.voteResult);
+    }
+////////////////////////////////////////////////////
+    
     $scope.deleteOption = function(i) {
         $scope.options.splice(i, 1); 
     }
 
     $scope.addNewOption = function(opt) {
+
+        if (opt == "") { 
+            $scope.emptyOption = "Vote option is empty!";
+            return;
+        }
+        $scope.emptyOption = "";
         if ( $scope.options.includes(opt)) { 
             $scope.duplicate = "Duplicate vote option!";
             return;
@@ -44,11 +61,15 @@ app.controller("voteCtrl", function ($location, $scope, voteSrv, userSrv) {
         $location.path("/votes");
     }
 //////////////////////////////////////////////////    
+
+    $scope.option = '';
     
     $scope.sendVoteChoice = function(vote){
-//      alert(vote.voteResult[$scope.option] + "/" + $scope.option);    
+//      alert(vote.voteResult[$scope.option] + "/" + $scope.option);  
+        if ($scope.option == '') return;
         vote.voteResult[$scope.option]++;
         $scope.getActiveUser().uVotesIds.push(vote.voteId);       
+        $scope.option = '';
     //   alert(vote.voteResult[$scope.option]);    
     }
 ///////////////////////////////////////////////////
