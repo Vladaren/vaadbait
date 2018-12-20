@@ -1,22 +1,40 @@
 app.controller("voteCtrl", function ($location, $scope, voteSrv, userSrv) {
+    
     $scope.options=[];
     $scope.twooptions  = "";
     $scope.duplicate   = "";
     $scope.emptyOption = "";
-    $scope.voteName   = "Tempory Name"; 
-    $scope.voteText   = "Tempory Text"; 
-    $scope.voteOption = "option1";
+    $scope.voteName    = "Tempory Name"; 
+    $scope.voteText    = "Tempory Text"; 
+    $scope.voteOption  = "option1";
     $scope.data = [];
 //////////////////////////////////////////////////
+    $scope.selOption = [];    
+
+    $scope.sendVoteChoice = function(i){
+        if ($scope.selOption[i] == '') return;
+        $scope.votes[i].voteResult[$scope.selOption[i]]++;
+        $scope.getActiveUser().uVotesIds.push($scope.votes[i].voteId);       
+        //option = '';
+    }
+
+    $scope.clicked = function(i,key){
+        $scope.selOption[i] = key;
+    }    
+
     // Chart
     $scope.chartOptions = { legend: {display: true} };
-       
-    $scope.updateChart = function(vote) {
-        $scope.labels = Object.keys(vote.voteResult) ;
-        return Object.values(vote.voteResult);
+
+    $scope.chartLabels = function(vote) {        
+        return Object.keys  (vote.voteResult);
     }
-////////////////////////////////////////////////////
-    
+
+    $scope.chartValues = function(vote) {
+        return Object.values(vote.voteResult);      
+    }
+
+
+///////////////////////////////////////////////////
     $scope.deleteOption = function(i) {
         $scope.options.splice(i, 1); 
     }
@@ -29,7 +47,7 @@ app.controller("voteCtrl", function ($location, $scope, voteSrv, userSrv) {
         }
         $scope.emptyOption = "";
         if ( $scope.options.includes(opt)) { 
-            $scope.duplicate = "Duplicate vote option!";
+            $scope.duplicate = "Dublicate vote option!";
             return;
         }
         $scope.duplicate = "";
@@ -60,19 +78,7 @@ app.controller("voteCtrl", function ($location, $scope, voteSrv, userSrv) {
 
         $location.path("/votes");
     }
-//////////////////////////////////////////////////    
-
-    $scope.option = '';
-    
-    $scope.sendVoteChoice = function(vote){
-//      alert(vote.voteResult[$scope.option] + "/" + $scope.option);  
-        if ($scope.option == '') return;
-        vote.voteResult[$scope.option]++;
-        $scope.getActiveUser().uVotesIds.push(vote.voteId);       
-        $scope.option = '';
-    //   alert(vote.voteResult[$scope.option]);    
-    }
-///////////////////////////////////////////////////
+///////////////////////////////////////////////////////////
     $scope.getActiveUser = function() {
         //alert( userSrv.getActiveUser().name);
         return userSrv.getActiveUser()
@@ -87,8 +93,4 @@ app.controller("voteCtrl", function ($location, $scope, voteSrv, userSrv) {
             $scope.votes = resp;    
         }, function(error) { })
     }  
-
-    $scope.clicked = function(x){
-        $scope.option = x;
-    }    
 })

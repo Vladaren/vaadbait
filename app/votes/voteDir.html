@@ -1,14 +1,20 @@
-<div id="formvote" class="formVaadBait">
+<div id="formvote" class="formVaadBait" ng-init="voteIndex=$index; selOption[voteIndex]='';">
    
     <!-- <div class="form-group" ng-init="uEmail='u1@gmail.com';uPassw='u1pass'" > -->
-        Vote №: {{vote.voteId}}
-        <h6>{{vote.voteName}}</h6>
-        {{vote.voteText}}     
+        Vote №: {{votes[index].voteId}}
+        <h6>{{votes[index].voteName}}</h6>
+        {{votes[index].voteText}}     
     <!-- {{getActiveUser().uVotesIds.includes(vote.voteId)? isvisible="novisibl" : isvisible="" }} -->
      
         <div ng-repeat="key in getKeys(vote.voteResult)" >       
             <div class='{{getActiveUser().uVotesIds.includes(vote.voteId)? "novisible" : "" }}'>
-                <input type="radio" name="nnn" ng-click="clicked(key)" value="{{key}}"> {{key}}<br>
+                <input  type="radio" 
+                        name="nnn" 
+                        ng-click="clicked(voteIndex,key)" 
+                        value="{{key}}"
+                > 
+                {{key}}
+                <br>
             </div>           
             <div class='{{!getActiveUser().uVotesIds.includes(vote.voteId)? "novisible" : "" }}'>
                {{key}} :: {{vote.voteResult[key]}}
@@ -16,15 +22,13 @@
         </div>
         <br>
         <div>
-            <button class='{{ getActiveUser().uVotesIds.includes(vote.voteId)? "novisible" : "" }}' type="button" ng-click="sendVoteChoice(vote);">Send</button>   
+            <button class='{{ getActiveUser().uVotesIds.includes(vote.voteId)? "novisible" : "" }}' type="button" ng-click="sendVoteChoice(voteIndex);">Send</button>   
         </div>
-        
         <!-- <canvas id="pie" 
             class         = "chart-pie {{!getActiveUser().uVotesIds.includes(vote.voteId)? 'novisible' : '' }}"
-            chart-data    = "updateChart(vote)"
-            chart-labels  = "labels" 
+            chart-labels  = "chartLabels(vote)"
+            chart-data    = "chartValues(vote)" 
             chart-options = "chartOptions"
         >
-        </canvas>    -->
-        
+        </canvas>  -->
 </div>
