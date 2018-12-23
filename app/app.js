@@ -1,4 +1,4 @@
-var app = angular.module("houseApp", ["ngRoute", "chart.js"]);
+var app = angular.module("houseApp", ["ngRoute","chart.js"]);
 
 app.config(function($routeProvider) {
   $routeProvider

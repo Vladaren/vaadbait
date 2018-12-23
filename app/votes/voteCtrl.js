@@ -1,13 +1,13 @@
 app.controller("voteCtrl", function ($location, $scope, voteSrv, userSrv) {
     
-    $scope.options=[];
+    $scope.options     = [];
     $scope.twooptions  = "";
     $scope.duplicate   = "";
     $scope.emptyOption = "";
     $scope.voteName    = "Tempory Name"; 
     $scope.voteText    = "Tempory Text"; 
     $scope.voteOption  = "option1";
-    $scope.data = [];
+    $scope.data        = [];
 //////////////////////////////////////////////////
     $scope.selOption = [];    
 
@@ -21,18 +21,6 @@ app.controller("voteCtrl", function ($location, $scope, voteSrv, userSrv) {
     $scope.clicked = function(i,key){
         $scope.selOption[i] = key;
     }    
-
-    // Chart
-    $scope.chartOptions = { legend: {display: true} };
-
-    $scope.chartLabels = function(vote) {        
-        return Object.keys  (vote.voteResult);
-    }
-
-    $scope.chartValues = function(vote) {
-        return Object.values(vote.voteResult);      
-    }
-
 
 ///////////////////////////////////////////////////
     $scope.deleteOption = function(i) {
@@ -51,9 +39,10 @@ app.controller("voteCtrl", function ($location, $scope, voteSrv, userSrv) {
             return;
         }
         $scope.duplicate = "";
+        $scope.emptyOption = "";
         $scope.options.push(opt);
         $scope.voteOption="";
-        $scope.twooptions = "";
+        $scope.twooptions = "";        
     }
     
     $scope.addNewVote = function(name,text,options){
@@ -64,18 +53,19 @@ app.controller("voteCtrl", function ($location, $scope, voteSrv, userSrv) {
         }
         $scope.twooptions = "";
         $scope.duplicate  = "";
-
+        $scope.emptyOption = "";
         var objoptions = {};        
         for (var i=0; i< options.length; i++){
             objoptions[options[i]] = 0;
         }
+
         voteSrv.newVote(name,text,objoptions);
 
         $scope.options=[];
         $scope.voteName   = "Tempory Name"; 
         $scope.voteText   = "Tempory Text"; 
         $scope.voteOption = "option1";
-
+//        $scope.selOption = [];  
         $location.path("/votes");
     }
 ///////////////////////////////////////////////////////////
@@ -88,6 +78,7 @@ app.controller("voteCtrl", function ($location, $scope, voteSrv, userSrv) {
         return Object.keys(obj);
     }
 
+    
     $scope.getAllVotes = function() {
         voteSrv.getAllVotes().then(function(resp){
             $scope.votes = resp;    

@@ -1,9 +1,9 @@
 <div id="formvote" class="formVaadBait" ng-init="voteIndex=$index; selOption[voteIndex]='';">
    
     <!-- <div class="form-group" ng-init="uEmail='u1@gmail.com';uPassw='u1pass'" > -->
-        Vote №: {{votes[index].voteId}}
-        <h6>{{votes[index].voteName}}</h6>
-        {{votes[index].voteText}}     
+    Vote №: {{vote.voteId +" / "+votes[voteIndex].voteId}}
+        <h6>{{vote.voteName}}</h6>
+            {{vote.voteText}}     
     <!-- {{getActiveUser().uVotesIds.includes(vote.voteId)? isvisible="novisibl" : isvisible="" }} -->
      
         <div ng-repeat="key in getKeys(vote.voteResult)" >       
@@ -24,11 +24,12 @@
         <div>
             <button class='{{ getActiveUser().uVotesIds.includes(vote.voteId)? "novisible" : "" }}' type="button" ng-click="sendVoteChoice(voteIndex);">Send</button>   
         </div>
-        <!-- <canvas id="pie" 
-            class         = "chart-pie {{!getActiveUser().uVotesIds.includes(vote.voteId)? 'novisible' : '' }}"
-            chart-labels  = "chartLabels(vote)"
-            chart-data    = "chartValues(vote)" 
-            chart-options = "chartOptions"
-        >
-        </canvas>  -->
+        <chart-vote></chart-vote>
+        
 </div>
+<!--
+    
+    chart-data    = "chartValues(voteIndex)" 
+    class         = "chart-pie {{!getActiveUser().uVotesIds.includes(vote.voteId)? '-novisible' : '' }}" 
+    chart-labels  = "chartLabels(voteIndex)" 
+-->
